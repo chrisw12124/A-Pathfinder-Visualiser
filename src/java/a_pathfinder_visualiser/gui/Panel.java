@@ -27,10 +27,12 @@ public class Panel extends JPanel {
             if (gridX >= 0 && gridX < grid.getSizeX() && gridY >= 0 && gridY < grid.getSizeY()) {
                 Node selectedNode = grid.getNode(gridX, gridY);
                 if (selectedNode != null) {
-                    selectedNode.setIsWall(true);
+                    if (!selectedNode.getIsWall()) {
+                        selectedNode.setIsWall(true);
+                        repaint();
+                    }
                 }
             }
-            repaint();
         }
 
         @Override
@@ -65,12 +67,14 @@ public class Panel extends JPanel {
             for (int x = 0; x < matrix[0].length; x++) {
                 int xPos = PADDING + x * (CELL_SIZE + PADDING);
                 int yPos = PADDING + y * (CELL_SIZE + PADDING);
+
                 if (grid.getNode(x, y).getIsWall()) {
                     g.setColor(Color.RED);
                 }
                 else {
                     g.setColor(Color.BLACK);
                 }
+
                 g.fillRect(xPos, yPos, CELL_SIZE, CELL_SIZE);
             }
         }
