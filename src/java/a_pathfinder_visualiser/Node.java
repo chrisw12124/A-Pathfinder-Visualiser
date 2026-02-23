@@ -8,8 +8,8 @@ public class Node {
     private boolean isWall;
     private boolean isVisited;
 
+    // Dijkstra's Variables
     private int distance;
-
     private Node parent;
 
     public Node(int x, int y) {
