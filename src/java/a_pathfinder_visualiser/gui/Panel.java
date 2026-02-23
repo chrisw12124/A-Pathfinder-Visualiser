@@ -30,6 +30,7 @@ public class Panel extends JPanel {
                     selectedNode.setIsWall(true);
                 }
             }
+            repaint();
         }
 
         @Override
@@ -42,7 +43,6 @@ public class Panel extends JPanel {
         }
 
     }
-
 
     public Panel(Grid grid) {
         this.grid = grid;
@@ -65,6 +65,12 @@ public class Panel extends JPanel {
             for (int x = 0; x < matrix[0].length; x++) {
                 int xPos = PADDING + x * (CELL_SIZE + PADDING);
                 int yPos = PADDING + y * (CELL_SIZE + PADDING);
+                if (grid.getNode(x, y).getIsWall()) {
+                    g.setColor(Color.RED);
+                }
+                else {
+                    g.setColor(Color.BLACK);
+                }
                 g.fillRect(xPos, yPos, CELL_SIZE, CELL_SIZE);
             }
         }
