@@ -8,8 +8,8 @@ import java.awt.*;
 
 public class Panel extends JPanel {
 
-    private final int CELL_SIZE = 30;
-    private final int PADDING = 5;
+    public static final int CELL_SIZE = 30;
+    public static final int PADDING = 5;
 
     private Grid grid;
 
@@ -24,8 +24,8 @@ public class Panel extends JPanel {
         Node[][] matrix =  grid.getMatrix();
         for  (int y = 0; y < matrix.length; y++) {
             for (int x = 0; x < matrix[0].length; x++) {
-                int xPos = x * CELL_SIZE + PADDING;
-                int yPos = y * CELL_SIZE + PADDING;
+                int xPos = PADDING + x * (CELL_SIZE + PADDING);
+                int yPos = PADDING + y * (CELL_SIZE + PADDING);
                 g.fillRect(xPos, yPos, CELL_SIZE, CELL_SIZE);
             }
         }
