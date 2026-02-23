@@ -12,6 +12,11 @@ public class Node {
 
     private Node parent;
 
+    public Node(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public int getX() {
         return x;
     }

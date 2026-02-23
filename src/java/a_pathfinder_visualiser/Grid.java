@@ -6,8 +6,8 @@ import java.util.List;
 public class Grid {
 
     private final int[][] DIRECTIONS = {{0,1}, {0,-1},{1,0},{-1,0}};
-    private int sizeX = 10;
-    private int sizeY = 10;
+    private int sizeX;
+    private int sizeY;
     private Node[][] matrix;
 
     public Grid(int x, int y) {
@@ -17,11 +17,11 @@ public class Grid {
     private void newGrid(int gridX, int gridY) {
         sizeX = gridX;
         sizeY = gridY;
-        matrix = new Node[sizeX][sizeY];
+        matrix = new Node[sizeY][sizeX];
 
         for (int y = 0; y < sizeY; y++) {
             for (int x = 0; x < sizeX; x++) {
-                matrix[y][x] = new Node();
+                matrix[y][x] = new Node(x, y);
             }
         }
     }
@@ -41,13 +41,11 @@ public class Grid {
             int newX = x + direction[0];
             int newY = y + direction[1];
 
-            if (newX >= 0 && newX <= sizeX && newY >= 0 && newY <= sizeY) {
-                neighbor = matrix[newX][newY];
+            if (newX >= 0 && newX < sizeX && newY >= 0 && newY < sizeY) {
+                neighbor = matrix[newY][newX];
 
-                if (neighbor != null) {
-                    if (!neighbor.getIsWall()) {
-                        neighbors.add(neighbor);
-                    }
+                if (neighbor != null && !neighbor.getIsWall()) {
+                    neighbors.add(neighbor);
                 }
             }
         }
