@@ -50,7 +50,9 @@ public class Panel extends JPanel {
 
     public void addListeners() {
         // Mouse Listener and Mouse Motion Listener
-
+        CustomMouseListener customMouseListener = new CustomMouseListener();
+        this.addMouseListener(customMouseListener);
+        this.addMouseMotionListener(customMouseListener);
     }
 
     @Override

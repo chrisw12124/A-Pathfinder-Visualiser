@@ -28,6 +28,7 @@ public class Node {
         return isWall;
     }
     public void setIsWall(boolean isWall) {
+        System.out.println("Set wall");
         this.isWall = isWall;
     }
     public boolean getIsVisited() {
