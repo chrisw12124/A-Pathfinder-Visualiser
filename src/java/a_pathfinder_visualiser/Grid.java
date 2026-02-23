@@ -10,6 +10,10 @@ public class Grid {
     private int sizeY;
     private Node[][] matrix;
 
+    public Node[][] getMatrix() {
+        return matrix;
+    }
+
     public Grid(int x, int y) {
         newGrid(x, y);
     }
