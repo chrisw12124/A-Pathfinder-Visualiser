@@ -46,6 +46,7 @@ public class Panel extends JPanel {
 
     public Panel(Grid grid) {
         this.grid = grid;
+        addListeners();
     }
 
     public void addListeners() {
