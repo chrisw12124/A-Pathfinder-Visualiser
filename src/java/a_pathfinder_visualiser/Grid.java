@@ -14,6 +14,13 @@ public class Grid {
         return matrix;
     }
 
+    public int getSizeX() {
+        return sizeX;
+    }
+    public int getSizeY() {
+        return sizeY;
+    }
+
     public Grid(int x, int y) {
         newGrid(x, y);
     }

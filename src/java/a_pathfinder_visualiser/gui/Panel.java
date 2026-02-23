@@ -5,6 +5,8 @@ import a_pathfinder_visualiser.Node;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Panel extends JPanel {
 
@@ -13,8 +15,42 @@ public class Panel extends JPanel {
 
     private Grid grid;
 
+    private class CustomMouseListener extends MouseAdapter {
+
+        public void handleMouseInput(MouseEvent e) {
+            int pixelX = e.getX();
+            int pixelY = e.getY();
+
+            int gridX = (pixelX - PADDING) / (CELL_SIZE +PADDING);
+            int gridY = (pixelY - PADDING) / (CELL_SIZE +PADDING);
+
+            if (gridX >= 0 && gridX < grid.getSizeX() && gridY >= 0 && gridY < grid.getSizeY()) {
+                Node selectedNode = grid.getNode(gridX, gridY);
+                if (selectedNode != null) {
+                    selectedNode.setIsWall(true);
+                }
+            }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            handleMouseInput(e);
+        }
+        @Override
+        public void mouseDragged(MouseEvent e) {
+            handleMouseInput(e);
+        }
+
+    }
+
+
     public Panel(Grid grid) {
         this.grid = grid;
+    }
+
+    public void addListeners() {
+        // Mouse Listener and Mouse Motion Listener
+
     }
 
     @Override
