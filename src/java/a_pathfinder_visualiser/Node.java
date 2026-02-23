@@ -27,11 +27,16 @@ public class Node {
     public boolean getIsWall() {
         return isWall;
     }
+    public void setIsWall(boolean isWall) {
+        this.isWall = isWall;
+    }
     public boolean getIsVisited() {
         return isVisited;
     }
-
     private Node getParent() {
         return parent;
+    }
+    public void setParent(Node parent) {
+        this.parent = parent;
     }
 }
